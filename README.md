@@ -1,20 +1,18 @@
-QUICK START:
+# Instructions
 
-1. Install Nextflow and Docker.
-     
-2. Test the pipeline:
-        
-        nextflow run federicacitarrella/FusionFlow -profile [test_docker/test_local]
+1. Install Nextflow :
+``` curl -s https://get.nextflow.io | bash ```
+
+
+2. Test the pipeline in the same folder:
+        ```
+        ./nextflow run federicacitarrella/FusionFlow -profile [test_docker/test_local]
+        ```
 
 4. Run your own analysis:
-        
-        nextflow run federicacitarrella/FusionFlow \
-                --rnareads “/path/to/rna/reads_{1,2}.*” \ 
-                --dnareads_tumor “/path/to/dna/tumor/reads_{3,4}.*” \
-                --dnareads_normal “/path/to/dna/normal/reads_{5,6}.*” \
-                --arriba --ericscript --fusioncatcher --integrate --genefuse \
-                -profile <docker/local>
-
+```
+        ./nextflow run pipeline.nf --rnareads “/path/to/rna/reads_{1,2}.*” --dnareads_tumor “/path/to/dna/tumor/reads_{3,4}.* --dnareads_normal “/path/to/dna/normal/reads_{3,4}.*” --arriba --ericscript --fusioncatcher --integrate --genefuse -profile <docker/local>
+```
 Before using the local profile you need to create conda virtual environments from the yml files and specify the environment path in the command line (the Arriba path does not need "/bin").
 e.g. nextflow run federicacitarrella/FusionFlow \
         --envPath_ericscript /path/to/miniconda3/envs/ericscript/bin \
