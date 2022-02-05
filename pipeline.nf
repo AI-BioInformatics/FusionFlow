@@ -605,8 +605,8 @@ process genefuse_converter{
     mkdir input && mkdir input/${pair_id}
 
     if ${params.dnabam} && ${integrateWGSt}; then
-        samtools sort -n  -o "/nas/softechict-nas-2/fbolelli/data_disco1/data/${wgstinput}"
-        samtools fastq -@ ${params.nthreads} "/nas/softechict-nas-2/fbolelli/data_disco1/data/${wgstinput}" -1 ${pair_id}_3.fq.gz -2 ${pair_id}_4.fq.gz -0 /dev/null -s /dev/null -n
+        samtools sort -n  -o ${wgstinput}
+        samtools fastq -@ ${params.nthreads} ${wgstinput} -1 ${pair_id}_3.fq.gz -2 ${pair_id}_4.fq.gz -0 /dev/null -s /dev/null -n
         cp *.fq.gz input/${pair_id}
     elif ${integrateWGSt}; then
         cp ${wgstinput} input/${pair_id}
